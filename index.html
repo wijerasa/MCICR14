@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction To R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction To R">
+  <meta name="author" content="Saranga Wijeratne">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Introduction To R</h1>
+    <h2></h2>
+    <p>Saranga Wijeratne<br/>Systems Developer</p>
+  </hgroup>
+    <a href="https://github.com/wijerasa/MCICR14/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Topics</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Primitive Data types in R</li>
+<li><p>Primary Data Structures in R</p>
+
+<ul>
+<li>Vectors</li>
+<li>List</li>
+<li>Dataframes</li>
+</ul></li>
+<li><p>Missing Data</p></li>
+<li><p>Importing and Exporting Data</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="0" style="background:;">
+  <hgroup>
+    <h2>Useful R commands</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>help and search</h3>
+
+<ul>
+<li>? - Help.  <strong>Usage: ?c</strong></li>
+<li>?? - Search. <strong>Usage: ??c</strong></li>
+</ul>
+
+<h3>Checking for types</h3>
+
+<ul>
+<li><em>str</em>, <em>mode</em> provide info on type</li>
+<li>is.XXX
+
+<ul>
+<li><em>XXX</em>: integer,numeric, logical,character</li>
+</ul></li>
+</ul>
+
+<h3>Casting between types</h3>
+
+<ul>
+<li>as.XXX casts to specific type</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="0.1" style="background:;">
+  <hgroup>
+    <h2>Useful R commands</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Examing Objects</h3>
+
+<ul>
+<li>y</li>
+<li>head(y)</li>
+<li>summary(y)</li>
+<li>str(y)</li>
+<li>dim(y)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="1" style="background:;">
+  <hgroup>
+    <h2>1. Primitive Data types in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>integer</li>
+<li>numeric</li>
+<li>text/string</li>
+<li>complex numbers</li>
+<li>logical values</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="2" style="background:;">
+  <hgroup>
+    <h2>2. Primary Data Structures in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>2.1. Vectors - <em>Vectors are a collection of data of the same type.</em> </li>
+<li>2.2. Lists-    <em>Lists are a collection of R objects.</em></li>
+<li>2.3. Data Frames- <em>Tabular data sets in R are stored as dataframes.</em></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Dimension</th>
+<th>Homogeneous</th>
+<th>Heterogeneous</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1d</td>
+<td>Vector</td>
+<td>List</td>
+</tr>
+<tr>
+<td>2d</td>
+<td>Matrix</td>
+<td>Data frame</td>
+</tr>
+<tr>
+<td>nd</td>
+<td>Array</td>
+<td></td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="3" style="background:;">
+  <hgroup>
+    <h2>2.1 Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4><strong>Vectors are a collection of data of the same type.</strong></h4>
+
+<p>The data can be integers, floats (decimal numbers), complex numbers, text/strings, or logical values.</p>
+
+<h3>Creating a Vector</h3>
+
+<ul>
+<li><p><strong>c():</strong> Function combines the data into a Vector</p>
+
+<ul>
+<li>Ex 1: </li>
+</ul>
+
+<pre><code class="r"> doublevector&lt;-c(11,12.4,56,100)        
+</code></pre>
+
+<ul>
+<li>Ex 2:</li>
+</ul>
+
+<pre><code class="r"> isthisavector&lt;-c(12,&quot;weirdo&quot;,23.4)                 
+</code></pre></li>
+</ul>
+
+<style>
+strong {
+  font-weight: bold;
+  font-style: italic;
+}
+em {
+  font-style: italic;
+}
+</style>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="4" style="background:;">
+  <hgroup>
+    <h2>2.1  Vectors Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Creating a Vector</h3>
+
+<ul>
+<li><p><strong>seq(from, to, by)</strong></p>
+
+<ul>
+<li>Ex 1: </li>
+</ul>
+
+<pre><code class="r">intvector&lt;-seq(from=1, to=100, by=2)
+</code></pre>
+
+<h4>OUTPUT:</h4>
+
+<pre><code class="r">intvector
+</code></pre>
+
+<pre><code>##  [1]  1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45
+## [24] 47 49 51 53 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91
+## [47] 93 95 97 99
+</code></pre></li>
+</ul>
+
+<style>
+strong {
+  font-weight: bold;
+  font-style: italic;
+}
+em {
+  font-style: italic;
+}
+</style>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="5" style="background:;">
+  <hgroup>
+    <h2>2.1  Vectors Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Creating a Vector</h3>
+
+<ul>
+<li><p>Ex 2:</p>
+
+<pre><code class="r">intvector&lt;-1:40 
+</code></pre>
+
+<p>OUTPUT:</p>
+
+<pre><code class="r">intvector
+</code></pre>
+
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+## [24] 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
+</code></pre></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="5" style="background:;">
+  <hgroup>
+    <h2>2.1  Vectors Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Address  values in a Vector</h3>
+
+<ul>
+<li><p><strong>[]</strong> -use brackets. Ex:  <em>myVector[index]</em></p>
+
+<ul>
+<li>Ex 1:</li>
+</ul>
+
+<pre><code class="r">myVector&lt;-1:10
+
+first_item&lt;-myVector[1]                         
+</code></pre>
+
+<h4>OUTPUT:</h4>
+
+<pre><code class="r">first_item
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+<p><strong>Note: Vectors in R are one-based</strong> 
+<em>i.e start at 1</em></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="6" style="background:;">
+  <hgroup>
+    <h2>2.1  Vectors Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Address  values in a Vector Cont...</h3>
+
+<ul>
+<li><p>Ex 2:</p>
+
+<pre><code class="r">first_five_items&lt;-myVector[1:5]    
+</code></pre>
+
+<h4>OUTPUT:</h4>
+
+<pre><code class="r">first_five_items
+</code></pre>
+
+<pre><code>## [1] 1 2 3 4 5
+</code></pre></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="7" style="background:;">
+  <hgroup>
+    <h2>2.1  Vectors</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>Question</h4>
+
+<ul>
+<li>From the R command line, creat a vector of 10 numbers.</li>
+<li>Append 4 <strong>NA</strong> values. Hint: use <strong>c()</strong> function to combine <strong>NA</strong> vector with the number vector</li>
+<li>Use <strong>is.na()</strong> function to identify <strong>NA</strong> values in the above Vector</li>
+<li>Identify the type of data structure  generated in previous question (using <strong>is.logical()</strong>)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="7" style="background:;">
+  <hgroup>
+    <h2>2.2  Lists</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4><strong>Lists are a collection of R objects.</strong></h4>
+
+<p>Unlike vectors, lists can consist any R objects i.e Vectors, Strings, integers.
+Objects do not need to be in the same type.</p>
+
+<h3>Creating a List</h3>
+
+<ul>
+<li><p><strong>list():</strong> Function combines the data into a list</p>
+
+<ul>
+<li>Ex 1: </li>
+</ul>
+
+<pre><code class="r"> myAwesomeList&lt;-list( 11,               #integer
+                      12.4,             #double
+                      c(&quot;Rep1&quot;,&quot;Rep2&quot;), #character Vector
+                      &quot;RNA-Seq&quot;         #String
+                     )               
+</code></pre></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="8" style="background:;">
+  <hgroup>
+    <h2>2.2  Lists Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Creating a List Cont...</h3>
+
+<h4>OUTPUT:</h4>
+
+<pre><code class="r">     myAwesomeList              
+</code></pre>
+
+<pre><code>   ## [[1]]
+   ## [1] 11
+   ## 
+   ## [[2]]
+   ## [1] 12.4
+   ## 
+   ## [[3]]
+   ## [1] &quot;Rep1&quot; &quot;Rep2&quot;
+   ## 
+   ## [[4]]
+   ## [1] &quot;RNA-Seq&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="9" style="background:;">
+  <hgroup>
+    <h2>2.2 Lists Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Creating a List Cont...</h3>
+
+<ul>
+<li><p>Ex 2:</p>
+
+<pre><code class="r">myAwesomeList2&lt;-list(
+                  countData=(
+                              list(c(12,13,45,155),c(1,3,5,130),c(12,13,45,155))
+                            ),
+
+                  headers=c(&quot;R1&quot;,&quot;R2&quot;,&quot;C1&quot;,&quot;C2&quot;)
+                )    
+</code></pre></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="10" style="background:;">
+  <hgroup>
+    <h2>2.2 Lists Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Creating a List Cont...</h3>
+
+<h4>OUTPUT:</h4>
+
+<pre><code class="r">     myAwesomeList2              
+</code></pre>
+
+<pre><code>   ## $countData
+   ## $countData[[1]]
+   ## [1]  12  13  45 155
+   ## 
+   ## $countData[[2]]
+   ## [1]   1   3   5 130
+   ## 
+   ## $countData[[3]]
+   ## [1]  12  13  45 155
+   ## 
+   ## 
+   ## $headers
+   ## [1] &quot;R1&quot; &quot;R2&quot; &quot;C1&quot; &quot;C2&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="11" style="background:;">
+  <hgroup>
+    <h2>2.2 Lists Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Address  values in a List</h3>
+
+<ul>
+<li><p><strong>[]</strong> -use brackets</p>
+
+<ul>
+<li>Ex 1: Get the first element of the list</li>
+</ul>
+
+<pre><code class="r">myAwesomeList[1]                         
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 11
+</code></pre>
+
+<ul>
+<li>Ex 2: Get the first element of the first element</li>
+</ul>
+
+<pre><code class="r">myAwesomeList[[1]] 
+</code></pre>
+
+<pre><code>## [1] 11
+</code></pre></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="12" style="background:;">
+  <hgroup>
+    <h2>2.2 Lists Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Address  values in a List Cont...</h3>
+
+<ul>
+<li><p><strong>Use object&#39;s name</strong></p>
+
+<ul>
+<li>Ex 2: Get the object names from the list</li>
+</ul>
+
+<pre><code class="r">names(myAwesomeList2)                        
+</code></pre>
+
+<pre><code>## [1] &quot;countData&quot; &quot;headers&quot;
+</code></pre>
+
+<h4>OUTPUT:</h4>
+
+<pre><code class="r">myAwesomeList2$headers
+</code></pre>
+
+<pre><code>## [1] &quot;R1&quot; &quot;R2&quot; &quot;C1&quot; &quot;C2&quot;
+</code></pre></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="13" style="background:;">
+  <hgroup>
+    <h2>2.2 Lists</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>Question</h4>
+
+<ul>
+<li>Create a list of 3 objects.</li>
+<li>Address the objects in the list by bracket notation and the name</li>
+<li>use as.vector function on the list and convert the list to vectors</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="14" style="background:;">
+  <hgroup>
+    <h2>2.3 Dataframes</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4><strong>Tabular data sets in R are stored as dataframes.</strong></h4>
+
+<p>The list of vectors can think as a Dataframe. </p>
+
+<h3>Creating a Dataframes</h3>
+
+<ul>
+<li><p><strong>data.frame()</strong> </p>
+
+<ul>
+<li>Ex 1: </li>
+</ul>
+
+<pre><code class="r"> myDataFrame&lt;-data.frame( 
+                          col1=c(11,12.4,56,100), #first column
+                          col2=c(23,3,1,5)        #second column
+                        )                    
+</code></pre></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="15" style="background:;">
+  <hgroup>
+    <h2>2.3  Dataframes Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>OUTPUT:</h4>
+
+<pre><code class="r">     myDataFrame                
+</code></pre>
+
+<pre><code>   ##    col1 col2
+   ## 1  11.0   23
+   ## 2  12.4    3
+   ## 3  56.0    1
+   ## 4 100.0    5
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="16" style="background:;">
+  <hgroup>
+    <h2>2.3  Dataframes Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Creating a Dataframe</h3>
+
+<ul>
+<li><p><strong>read.table()</strong> </p>
+
+<p><strong>Download this file: &quot;<a href="https://osu.box.com/countData">https://osu.box.com/countData</a>&quot;</strong></p>
+
+<ul>
+<li>Ex 2: </li>
+</ul>
+
+<pre><code class="r"> countTable&lt;-read.table(
+
+              file=&quot;~/Box Sync/File_Sharing/CountTable/CountTable.txt&quot;,
+              sep=&quot;\t&quot;
+
+              )     
+</code></pre></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="17" style="background:;">
+  <hgroup>
+    <h2>2.3  Dataframes Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>OUTPUT:</h4>
+
+<pre><code class="r">     head(n=3,countTable)                                             
+</code></pre>
+
+<pre><code>##             untreated1 untreated2 untreated3 untreated4 treated1 treated2
+## FBgn0000003          0          0          0          0        0        0
+## FBgn0000008         92        161         76         70      140       88
+## FBgn0000014          5          1          0          0        4        0
+##             treated3
+## FBgn0000003        1
+## FBgn0000008       70
+## FBgn0000014        0
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="18" style="background:;">
+  <hgroup>
+    <h2>2.3  Dataframes Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Address  values in a Dataframe...</h3>
+
+<ul>
+<li><p>Ex 1: <strong>Using column names</strong></p>
+
+<pre><code class="r">first_column&lt;-myDataFrame$col1    
+</code></pre></li>
+</ul>
+
+<h4>OUTPUT:</h4>
+
+<pre><code class="r">  first_column
+</code></pre>
+
+<pre><code>  ## [1]  11.0  12.4  56.0 100.0
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="19" style="background:;">
+  <hgroup>
+    <h2>2.3  Dataframes Cont...</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Address  values in a Dataframe Cont...</h3>
+
+<ul>
+<li><p>Ex 2:[] -<strong>Using brackets. Ex: myDataFrame[rownumber,columnnumber]</strong></p>
+
+<pre><code class="r">second_column&lt;-myDataFrame[,2]   
+</code></pre></li>
+</ul>
+
+<h4>OUTPUT:</h4>
+
+<pre><code class="r">  second_column
+</code></pre>
+
+<pre><code>  ## [1] 23  3  1  5
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="20" style="background:;">
+  <hgroup>
+    <h2>2.3  Dataframes Cont..</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>Question</h4>
+
+<ul>
+<li>Create following dataframe</li>
+</ul>
+
+<pre><code>##   n  s     b
+## 1 2 aa  TRUE
+## 2 3 bb FALSE
+## 3 5 cc  TRUE
+</code></pre>
+
+<ul>
+<li>verify your dataframe using <strong>is.dataframe()</strong></li>
+<li>check number of data rows using <strong>nrows()</strong></li>
+<li>check number of columns using <strong>ncol()</strong></li>
+<li>check the dimensions using <strong>dim()</strong></li>
+<li>check headers using <strong>colname()</strong></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="21" style="background:;">
+  <hgroup>
+    <h2>3  Missing Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>NA - <em>not available.</em> </li>
+<li>Inf, -Inf, NaN-    <em>Postive Infinite, Negative Infinite, Not A Number (impossible values, dividing by Zero).</em></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h3>How to check</h3>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>is.finite(),is.nan(), is.na(), complete.cases()</strong> - Use these functions to check above special values</li>
+</ul>
+
+<h4>Example</h4>
+
+<pre><code class="r">vector_missing_values&lt;-c(1,2,3,NA,NaN,Inf,-Inf)
+is.na(vector_missing_values)
+</code></pre>
+
+<pre><code>## [1] FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE
+</code></pre>
+
+<pre><code class="r">is.finite(vector_missing_values)
+</code></pre>
+
+<pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
+</code></pre>
+
+<pre><code class="r">is.infinite(vector_missing_values)
+</code></pre>
+
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="22" style="background:;">
+  <hgroup>
+    <h2>3  Missing Data Cont..</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>Example</h4>
+
+<pre><code class="r">complete.cases(vector_missing_values)
+</code></pre>
+
+<pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="23" style="background:;">
+  <hgroup>
+    <h2>3 Missing Data Cont..</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Ways to Exclude Missing Values</h3>
+
+<ul>
+<li>na.fail() : <em>Stop if any missing values are encountered</em></li>
+<li>na.omit(): <em>Drop out any rows with missing values anywhere in them and forgets them forever.</em></li>
+<li>na.exclude(): <em>Drop out rows with missing values, but keeps track of where they were (so that when you make predictions, for example, you end up with a vector whose length is that of the original response.)</em></li>
+<li>na.pass(): <em>Take no action.</em></li>
+<li>Many functions have parameter na.rm</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="24" style="background:;">
+  <hgroup>
+    <h2>4 Importing and Exporting Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Data formats</h3>
+
+<ul>
+<li>Tabular Flat Files</li>
+</ul>
+
+<p>Data store in a table, consisting of columns and rows. These include spreadsheets and delimited text files.</p>
+
+<h4>Examples</h4>
+
+<p>Excel spreadsheets (.xls or .xlsx), Comma separated variables (.csv) and tab- delimited text files (usually .txt or .dat)</p>
+
+<ul>
+<li>Relational databases</li>
+</ul>
+
+<p>A collection of tables, each having one column identified as a key variable. Tables are related to each other through these keys.</p>
+
+<h4>Examples</h4>
+
+<p>Microsoft Access, database software such as MySQL and Oracle.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="25" style="background:;">
+  <hgroup>
+    <h2>4 Importing and Exporting Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Tabular Flat Files</h3>
+
+<ul>
+<li><p>Text files</p>
+
+<p>Data stored as plain text is the simplest and preferred format. Rows are given stored on a line and columns are separated by a delimiter. Common delimiters include: commas (.csv), tabs, semicolons, and ampersands (.txt or .dat).
+In this seminar we will show how to import a text file into R.</p></li>
+<li><p>Excel spreadsheets</p>
+
+<p>Microsoft Excel default file format is either a binary (.xls) format or xml (.xlsx) format. This is necessary to support the formatting and formula functionality of Excel.</p>
+
+<p>R does not currently support the direct import of Excel files. Instead, data in an Excel spreadsheet can be saved as a comma delimited text file, by selecting the option under the “File-&gt;Save As” menu.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="26" style="background:;">
+  <hgroup>
+    <h2>4 Importing and Exporting Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Importing Tabular Flat Files</h3>
+
+<table><thead>
+<tr>
+<th>Function</th>
+<th>header</th>
+<th>sep</th>
+<th>quote</th>
+<th>dec</th>
+<th>fill</th>
+<th>comment.char</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>read.table</td>
+<td>FALSE</td>
+<td></td>
+<td>\” or \’</td>
+<td>.</td>
+<td>!blank.lines.skip</td>
+<td>#</td>
+</tr>
+<tr>
+<td>read.csv</td>
+<td>TRUE</td>
+<td>,</td>
+<td>\”</td>
+<td>.</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr>
+<td>read.csv2</td>
+<td>TRUE</td>
+<td>;</td>
+<td>\”</td>
+<td>,</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr>
+<td>read.delim</td>
+<td>TRUE</td>
+<td>\t</td>
+<td>\”</td>
+<td>.</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+<tr>
+<td>read.delim2</td>
+<td>TRUE</td>
+<td>\t</td>
+<td>\”</td>
+<td>,</td>
+<td>TRUE</td>
+<td></td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h4>Examples</h4>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">countTable&lt;-read.table(
+            file=&quot;~/Box Sync/File_Sharing/CountTable/CountTable.txt&quot;, 
+            sep=&quot;\t&quot;
+            )
+</code></pre>
+
+<pre><code class="r">head(countTable, 5)
+</code></pre>
+
+<pre><code>##             untreated1 untreated2 untreated3 untreated4 treated1 treated2
+## FBgn0000003          0          0          0          0        0        0
+## FBgn0000008         92        161         76         70      140       88
+## FBgn0000014          5          1          0          0        4        0
+## FBgn0000015          0          2          1          2        1        0
+## FBgn0000017       4664       8714       3564       3150     6205     3072
+##             treated3
+## FBgn0000003        1
+## FBgn0000008       70
+## FBgn0000014        0
+## FBgn0000015        0
+## FBgn0000017     3334
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="27" style="background:;">
+  <hgroup>
+    <h2>4 Importing and Exporting Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Importing Tabular Flat Files cont..</h3>
+
+<ul>
+<li><p><em>read.table(file, header, sep, ...)</em></p>
+
+<ul>
+<li>Imports any delimited text file into R.</li>
+<li><em>&quot;file&quot;</em> is a string <em>i.e</em> path to the file on your hard drive, or URL path</li>
+<li><em>&quot;header&quot;</em> can be either &quot;TRUE&quot; or &quot;FALSE&quot;, and tells you the first line of the text is coulumn names(variables)</li>
+<li><em>&quot;sep&quot;</em> describes delimiter used in the text file.</li>
+</ul></li>
+<li><p><em>read.csv(file, header, ...)</em></p></li>
+<li><p><em>scan(file, what, n, sep, ...)</em></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="28" style="background:;">
+  <hgroup>
+    <h2>4 Importing and Exporting Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Exporting Data</h3>
+
+<ul>
+<li><em>write.table(dataset, file=&quot;name.txt&quot;, sep=&quot;\t&quot;)</em></li>
+<li><em>write.csv(dataset, file=&quot;name.csv&quot;)</em></li>
+</ul>
+
+<h4><strong>By default, the write.csv and write.table functions create an extra column in the file containing the observation numbers. To prevent this, set the row.names argument to F.</strong></h4>
+
+<ul>
+<li><p><em>write.table(dataset, &quot;filename.txt, row.names=F)</em></p></li>
+<li><p><em>write.csv(dataset, &quot;filename.csv, row.names=F)</em></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="29" style="background:;">
+  <hgroup>
+    <h2>Questions?</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="30" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Topics'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Useful R commands'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Useful R commands'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='1. Primitive Data types in R'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='2. Primary Data Structures in R'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='2.1 Vectors'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='2.1  Vectors Cont...'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='2.1  Vectors Cont...'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='2.1  Vectors Cont...'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='2.1  Vectors Cont...'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='2.1  Vectors'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='2.2  Lists'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='2.2  Lists Cont...'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='2.2 Lists Cont...'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='2.2 Lists Cont...'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='2.2 Lists Cont...'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='2.2 Lists Cont...'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='2.2 Lists'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='2.3 Dataframes'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='2.3  Dataframes Cont...'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='2.3  Dataframes Cont...'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='2.3  Dataframes Cont...'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='2.3  Dataframes Cont...'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='2.3  Dataframes Cont...'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='2.3  Dataframes Cont..'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='3  Missing Data'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='How to check'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='3  Missing Data Cont..'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='3 Missing Data Cont..'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='4 Importing and Exporting Data'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='4 Importing and Exporting Data'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='4 Importing and Exporting Data'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Examples'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='4 Importing and Exporting Data'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='4 Importing and Exporting Data'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Questions?'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title=''>
+         37
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
