@@ -9,7 +9,7 @@ mode: selfcontained
 hitheme: tomorrow
 subtitle: null
 framework: io2012
-widgets: []
+widgets: [bootstrap, quiz]
 github:
         user: wijerasa
         repo: MCICR14
@@ -25,6 +25,9 @@ github:
  
 3. Missing Data
 4. Importing and Exporting Data
+
+--- bg:url(assets/img/Workshop.jpg)
+
 
 --- .class #0
 
@@ -58,9 +61,8 @@ github:
 
 ## 1. Primitive Data types in R
 
-- integer
 - numeric
-- text/string
+- Characters
 - complex numbers
 - logical values
 
@@ -77,7 +79,22 @@ Dimension | Homogeneous | Heterogeneous
 --------- | ----------- | -------------
 1d        | Vector      | List
 2d        | Matrix      | Data frame
-nd        | Array
+nd        | Array       |
+
+
+--- 
+
+<img class='center' src='http://venus.ifca.unican.es/Rintro/_images/dataStructuresNew.png' height=1100px width=700px/>
+
+--- .segue bg:indigo
+
+## In next few slides
+
+### - Create Data structure
+### - Access data
+### - Identify data types
+### - Casting between types
+
 
 
 --- .class #3
@@ -99,13 +116,6 @@ The data can be integers, floats (decimal numbers), complex numbers, text/string
    ```r
      doublevector<-c(11,12.4,56,100)        
    ```
-  - Ex 2:
-
-   
-   ```r
-     isthisavector<-c(12,"weirdo",23.4)                 
-   ```
-
 <style>
 strong {
   font-weight: bold;
@@ -115,6 +125,32 @@ em {
   font-style: italic;
 }
 </style>
+
+--- &radio
+ 
+## Is this a proper Vector?
+
+
+```r
+     isthisavector<-c(12,"weirdo",23.4)                 
+```
+
+1. _yes_
+2. No
+
+*** .explanation
+
+This is a proper character Vector.
+
+```r
+isthisavector
+```
+
+```
+## [1] "12"     "weirdo" "23.4"
+```
+
+
 
 
 --- .class #4
@@ -176,6 +212,23 @@ em {
  ## [24] 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
  ```
 
+--- &radio
+ 
+## What are the two other parameters in _seq()_ object?
+
+1. length,col.names
+2. row.names,length
+3. _length.out,along.with_
+4. is.na,is.numeric
+
+*** .hint
+Get the help page for the _seq()_ object. Use the ?(help) command to get any help page. 
+
+*** .explanation
+
+length.out,along.with
+
+
 --- .class #5
 
 ## 2.1  Vectors Cont... ##
@@ -227,7 +280,38 @@ em {
   ## [1] 1 2 3 4 5
   ```
 
---- .class #7
+--- &radio
+ 
+## what R command generates following output?
+
+
+```
+## [1] 1 3 5
+```
+
+
+1. myVector[1,3,5]
+2. myVector[c(1,4,5)]
+3. myVector[c(0,3,5)]
+4. _myVector[c(1,3,5)]_
+
+*** .hint
+Combine correct indices using _c()_ funtion 
+
+*** .explanation
+
+
+```r
+myVector[c(1,3,5)]
+```
+
+```
+## [1] 1 3 5
+```
+
+
+
+--- &radio
 
 ## 2.1  Vectors  ##
 
@@ -235,10 +319,37 @@ em {
 #### Question 
 
 
-- From the R command line, creat a vector of 10 numbers.
+- From the R command line, creat a vector of 10 numbers. 
 - Append 4 __NA__ values. Hint: use __c()__ function to combine __NA__ vector with the number vector
 - Use __is.na()__ function to identify __NA__ values in the above Vector
 - Identify the type of data structure  generated in previous question (using __is.logical()__)
+
+*** .explanation
+
+
+```r
+  vector_of_ten_int<-seq(1,20,2)
+
+  combined_with_NA<-c( vector_of_ten_int, 
+                       rep(NA,times=4)
+                      )
+
+  is.na(combined_with_NA)
+```
+
+```
+##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+## [12]  TRUE  TRUE  TRUE
+```
+
+```r
+  is.logical(is.na(combined_with_NA))
+```
+
+```
+## [1] TRUE
+```
+
 
 --- .class #7
 
@@ -267,7 +378,6 @@ Objects do not need to be in the same type.
 
 ## 2.2  Lists Cont... ##
 
-
 ### Creating a List Cont... ###
 #### OUTPUT:
 
@@ -289,6 +399,48 @@ Objects do not need to be in the same type.
    ## [[4]]
    ## [1] "RNA-Seq"
    ```
+
+
+--- &radio
+ 
+## What function gives the structure of "myAwesomeList"?
+
+"myAwesomeList" Structure:
+
+
+```
+## List of 4
+##  $ : num 11
+##  $ : num 12.4
+##  $ : chr [1:2] "Rep1" "Rep2"
+##  $ : chr "RNA-Seq"
+```
+
+
+1. typeof(myAwesomeList)
+2. _str(myAwesomeList)_
+3. mode(myAwesomeList)
+4. length(myAwesomeList)
+
+*** .hint
+Got to "Useful R commands page" 
+
+*** .explanation
+
+Given an object, the best way to understand what data structures it’s composed of is to use str(). str() is short for structure and it gives a compact, human readable description of any R data structure.
+
+
+```r
+str(myAwesomeList)
+```
+
+```
+## List of 4
+##  $ : num 11
+##  $ : num 12.4
+##  $ : chr [1:2] "Rep1" "Rep2"
+##  $ : chr "RNA-Seq"
+```
 
 --- .class #9
 
@@ -398,7 +550,7 @@ Objects do not need to be in the same type.
  ## [1] "R1" "R2" "C1" "C2"
  ```
 
---- .class #13
+--- &radio
 
 ## 2.2 Lists  ##
 
@@ -406,11 +558,95 @@ Objects do not need to be in the same type.
 #### Question 
 
 
-- Create a list of 3 objects.
+- Create a list of 4 objects.
 - Address the objects in the list by bracket notation and the name
-- use as.vector function on the list and convert the list to vectors
+- use unlist() function on the list and convert the list to vectors
+
+*** .explanation
+Create a list of 4 objects:
+
+
+```r
+y <- list(
+          intger=1:4, 
+          char="N", 
+          boolean=c(FALSE, FALSE, TRUE),
+          double= c(4.3, 5.0)
+          )
+```
+
+Address the objects in the list by bracket notation:
+
+
+```r
+y[1:length(y)]
+```
+
+```
+## $intger
+## [1] 1 2 3 4
+## 
+## $char
+## [1] "N"
+## 
+## $boolean
+## [1] FALSE FALSE  TRUE
+## 
+## $double
+## [1] 4.3 5.0
+```
+and the name:
+
+
+```r
+y$intger
+```
+
+```
+## [1] 1 2 3 4
+```
+
+```r
+y$char
+```
+
+```
+## [1] "N"
+```
+
+```r
+y$boolean
+```
+
+```
+## [1] FALSE FALSE  TRUE
+```
+
+```r
+y$double
+```
+
+```
+## [1] 4.3 5.0
+```
+
+use unlist() function on the list and convert the list to vectors:
+
+
+```r
+unlist(y)
+```
+
+```
+##  intger1  intger2  intger3  intger4     char boolean1 boolean2 boolean3 
+##      "1"      "2"      "3"      "4"      "N"  "FALSE"  "FALSE"   "TRUE" 
+##  double1  double2 
+##    "4.3"      "5"
+```
 
 --- .class #14
+
+
 ## 2.3 Dataframes ##
 
 #### __Tabular data sets in R are stored as dataframes.__ 
@@ -572,7 +808,7 @@ The list of vectors can think as a Dataframe.
 
 
 - NA - _not available._ 
-- Inf, -Inf, NaN-    _Postive Infinite, Negative Infinite, Not A Number (impossible values, dividing by Zero)._
+- Inf, -Inf, NaN-    _Postive Infinity, Negative Infinity, Not A Number (impossible values, dividing by Zero)._
 
 --- 
 
@@ -649,14 +885,11 @@ complete.cases(vector_missing_values)
 
 - Tabular Flat Files
 
-Data store in a table, consisting of columns and rows. These include spreadsheets and delimited text files.
 
 #### Examples 
 Excel spreadsheets (.xls or .xlsx), Comma separated variables (.csv) and tab- delimited text files (usually .txt or .dat)
 
 - Relational databases
-
-A collection of tables, each having one column identified as a key variable. Tables are related to each other through these keys.
 
 #### Examples 
 Microsoft Access, database software such as MySQL and Oracle.
@@ -670,15 +903,15 @@ Microsoft Access, database software such as MySQL and Oracle.
 ### Tabular Flat Files###
 
 - Text files
-
-  Data stored as plain text is the simplest and preferred format. Rows are given stored on a line and columns are separated by a delimiter. Common delimiters include: commas (.csv), tabs, semicolons, and ampersands (.txt or .dat).
-In this seminar we will show how to import a text file into R.
-
+  
+  Data stored as plain text.Common delimiters include: commas (.csv), tabs, semicolons, and ampersands (.txt or .dat).
+  
+  
 - Excel spreadsheets
 
-  Microsoft Excel default file format is either a binary (.xls) format or xml (.xlsx) format. This is necessary to support the formatting and formula functionality of Excel.
+  Microsoft Excel default file format is either a binary (.xls) format or xml (.xlsx) format. 
 
-  R does not currently support the direct import of Excel files. Instead, data in an Excel spreadsheet can be saved as a comma delimited text file, by selecting the option under the “File->Save As” menu.
+####  __R does not currently support the direct import of Excel files. Instead, data in an Excel spreadsheet can be saved as a comma delimited text file, by selecting the option under the “File->Save As” menu.__
 
 
 

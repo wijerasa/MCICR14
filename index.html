@@ -13,7 +13,9 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
@@ -62,6 +64,13 @@
 <li><p>Importing and Exporting Data</p></li>
 </ol>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:url(assets/img/Workshop.jpg);">
+  <article data-timings="">
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -124,9 +133,8 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>integer</li>
 <li>numeric</li>
-<li>text/string</li>
+<li>Characters</li>
 <li>complex numbers</li>
 <li>logical values</li>
 </ul>
@@ -174,6 +182,31 @@
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-7" style="background:;">
+  <article data-timings="">
+    <p><img class='center' src='http://venus.ifca.unican.es/Rintro/_images/dataStructuresNew.png' height=1100px width=700px/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="segue" id="slide-8" style="background:indigo;">
+  <hgroup>
+    <h2>In next few slides</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>- Create Data structure</h3>
+
+<h3>- Access data</h3>
+
+<h3>- Identify data types</h3>
+
+<h3>- Casting between types</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
 <slide class="class" id="3" style="background:;">
   <hgroup>
     <h2>2.1 Vectors</h2>
@@ -195,24 +228,52 @@
 <pre><code class="r"> doublevector&lt;-c(11,12.4,56,100)        
 </code></pre>
 
-<ul>
-<li>Ex 2:</li>
-</ul>
-
-<pre><code class="r"> isthisavector&lt;-c(12,&quot;weirdo&quot;,23.4)                 
-</code></pre></li>
-</ul>
-
 <style>
 strong {
-  font-weight: bold;
-  font-style: italic;
+font-weight: bold;
+font-style: italic;
 }
 em {
-  font-style: italic;
+font-style: italic;
 }
-</style>
+</style></li>
+</ul>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Is this a proper Vector?</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div class="quiz quiz-single well ">
+  <pre><code class="r">     isthisavector&lt;-c(12,&quot;weirdo&quot;,23.4)                 
+</code></pre>
+
+<ol>
+<li><em>yes</em></li>
+<li>No</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-explanation">
+  <p>This is a proper character Vector.</p>
+
+<pre><code class="r">isthisavector
+</code></pre>
+
+<pre><code>## [1] &quot;12&quot;     &quot;weirdo&quot; &quot;23.4&quot;
+</code></pre>
+
+</div>
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -286,6 +347,38 @@ em {
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>What are the two other parameters in <em>seq()</em> object?</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div class="quiz quiz-single well ">
+  <ol>
+<li>length,col.names</li>
+<li>row.names,length</li>
+<li><em>length.out,along.with</em></li>
+<li>is.na,is.numeric</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>Get the help page for the <em>seq()</em> object. Use the ?(help) command to get any help page. </p>
+
+</div>
+<div class="quiz-explanation">
+  <p>length.out,along.with</p>
+
+</div>
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
 <slide class="class" id="5" style="background:;">
   <hgroup>
     <h2>2.1  Vectors Cont...</h2>
@@ -347,20 +440,88 @@ first_item&lt;-myVector[1]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="7" style="background:;">
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>what R command generates following output?</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div class="quiz quiz-single well ">
+  <pre><code>## [1] 1 3 5
+</code></pre>
+
+<ol>
+<li>myVector[1,3,5]</li>
+<li>myVector[c(1,4,5)]</li>
+<li>myVector[c(0,3,5)]</li>
+<li><em>myVector[c(1,3,5)]</em></li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>Combine correct indices using <em>c()</em> funtion </p>
+
+</div>
+<div class="quiz-explanation">
+  <pre><code class="r">myVector[c(1,3,5)]
+</code></pre>
+
+<pre><code>## [1] 1 3 5
+</code></pre>
+
+</div>
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>2.1  Vectors</h2>
   </hgroup>
   <article data-timings="">
-    <h4>Question</h4>
+    
+<div class="quiz quiz-single well ">
+  <h4>Question</h4>
 
 <ul>
-<li>From the R command line, creat a vector of 10 numbers.</li>
+<li>From the R command line, creat a vector of 10 numbers. </li>
 <li>Append 4 <strong>NA</strong> values. Hint: use <strong>c()</strong> function to combine <strong>NA</strong> vector with the number vector</li>
 <li>Use <strong>is.na()</strong> function to identify <strong>NA</strong> values in the above Vector</li>
 <li>Identify the type of data structure  generated in previous question (using <strong>is.logical()</strong>)</li>
 </ul>
 
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-explanation">
+  <pre><code class="r">  vector_of_ten_int&lt;-seq(1,20,2)
+
+  combined_with_NA&lt;-c( vector_of_ten_int, 
+                       rep(NA,times=4)
+                      )
+
+  is.na(combined_with_NA)
+</code></pre>
+
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+## [12]  TRUE  TRUE  TRUE
+</code></pre>
+
+<pre><code class="r">  is.logical(is.na(combined_with_NA))
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+</div>
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -421,6 +582,57 @@ Objects do not need to be in the same type.</p>
    ## [1] &quot;RNA-Seq&quot;
 </code></pre>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>What function gives the structure of &quot;myAwesomeList&quot;?</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div class="quiz quiz-single well ">
+  <p>&quot;myAwesomeList&quot; Structure:</p>
+
+<pre><code>## List of 4
+##  $ : num 11
+##  $ : num 12.4
+##  $ : chr [1:2] &quot;Rep1&quot; &quot;Rep2&quot;
+##  $ : chr &quot;RNA-Seq&quot;
+</code></pre>
+
+<ol>
+<li>typeof(myAwesomeList)</li>
+<li><em>str(myAwesomeList)</em></li>
+<li>mode(myAwesomeList)</li>
+<li>length(myAwesomeList)</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>Got to &quot;Useful R commands page&quot; </p>
+
+</div>
+<div class="quiz-explanation">
+  <p>Given an object, the best way to understand what data structures it’s composed of is to use str(). str() is short for structure and it gives a compact, human readable description of any R data structure.</p>
+
+<pre><code class="r">str(myAwesomeList)
+</code></pre>
+
+<pre><code>## List of 4
+##  $ : num 11
+##  $ : num 12.4
+##  $ : chr [1:2] &quot;Rep1&quot; &quot;Rep2&quot;
+##  $ : chr &quot;RNA-Seq&quot;
+</code></pre>
+
+</div>
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -549,19 +761,94 @@ Objects do not need to be in the same type.</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="13" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <hgroup>
     <h2>2.2 Lists</h2>
   </hgroup>
   <article data-timings="">
-    <h4>Question</h4>
+    
+<div class="quiz quiz-single well ">
+  <h4>Question</h4>
 
 <ul>
-<li>Create a list of 3 objects.</li>
+<li>Create a list of 4 objects.</li>
 <li>Address the objects in the list by bracket notation and the name</li>
-<li>use as.vector function on the list and convert the list to vectors</li>
+<li>use unlist() function on the list and convert the list to vectors</li>
 </ul>
 
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-explanation">
+  <p>Create a list of 4 objects:</p>
+
+<pre><code class="r">y &lt;- list(
+          intger=1:4, 
+          char=&quot;N&quot;, 
+          boolean=c(FALSE, FALSE, TRUE),
+          double= c(4.3, 5.0)
+          )
+</code></pre>
+
+<p>Address the objects in the list by bracket notation:</p>
+
+<pre><code class="r">y[1:length(y)]
+</code></pre>
+
+<pre><code>## $intger
+## [1] 1 2 3 4
+## 
+## $char
+## [1] &quot;N&quot;
+## 
+## $boolean
+## [1] FALSE FALSE  TRUE
+## 
+## $double
+## [1] 4.3 5.0
+</code></pre>
+
+<p>and the name:</p>
+
+<pre><code class="r">y$intger
+</code></pre>
+
+<pre><code>## [1] 1 2 3 4
+</code></pre>
+
+<pre><code class="r">y$char
+</code></pre>
+
+<pre><code>## [1] &quot;N&quot;
+</code></pre>
+
+<pre><code class="r">y$boolean
+</code></pre>
+
+<pre><code>## [1] FALSE FALSE  TRUE
+</code></pre>
+
+<pre><code class="r">y$double
+</code></pre>
+
+<pre><code>## [1] 4.3 5.0
+</code></pre>
+
+<p>use unlist() function on the list and convert the list to vectors:</p>
+
+<pre><code class="r">unlist(y)
+</code></pre>
+
+<pre><code>##  intger1  intger2  intger3  intger4     char boolean1 boolean2 boolean3 
+##      &quot;1&quot;      &quot;2&quot;      &quot;3&quot;      &quot;4&quot;      &quot;N&quot;  &quot;FALSE&quot;  &quot;FALSE&quot;   &quot;TRUE&quot; 
+##  double1  double2 
+##    &quot;4.3&quot;      &quot;5&quot;
+</code></pre>
+
+</div>
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -757,14 +1044,14 @@ Objects do not need to be in the same type.</p>
   <article data-timings="">
     <ul>
 <li>NA - <em>not available.</em> </li>
-<li>Inf, -Inf, NaN-    <em>Postive Infinite, Negative Infinite, Not A Number (impossible values, dividing by Zero).</em></li>
+<li>Inf, -Inf, NaN-    <em>Postive Infinity, Negative Infinity, Not A Number (impossible values, dividing by Zero).</em></li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-27" style="background:;">
+<slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h3>How to check</h3>
   </hgroup>
@@ -845,8 +1132,6 @@ is.na(vector_missing_values)
 <li>Tabular Flat Files</li>
 </ul>
 
-<p>Data store in a table, consisting of columns and rows. These include spreadsheets and delimited text files.</p>
-
 <h4>Examples</h4>
 
 <p>Excel spreadsheets (.xls or .xlsx), Comma separated variables (.csv) and tab- delimited text files (usually .txt or .dat)</p>
@@ -854,8 +1139,6 @@ is.na(vector_missing_values)
 <ul>
 <li>Relational databases</li>
 </ul>
-
-<p>A collection of tables, each having one column identified as a key variable. Tables are related to each other through these keys.</p>
 
 <h4>Examples</h4>
 
@@ -875,14 +1158,13 @@ is.na(vector_missing_values)
 <ul>
 <li><p>Text files</p>
 
-<p>Data stored as plain text is the simplest and preferred format. Rows are given stored on a line and columns are separated by a delimiter. Common delimiters include: commas (.csv), tabs, semicolons, and ampersands (.txt or .dat).
-In this seminar we will show how to import a text file into R.</p></li>
+<p>Data stored as plain text.Common delimiters include: commas (.csv), tabs, semicolons, and ampersands (.txt or .dat).</p></li>
 <li><p>Excel spreadsheets</p>
 
-<p>Microsoft Excel default file format is either a binary (.xls) format or xml (.xlsx) format. This is necessary to support the formatting and formula functionality of Excel.</p>
-
-<p>R does not currently support the direct import of Excel files. Instead, data in an Excel spreadsheet can be saved as a comma delimited text file, by selecting the option under the “File-&gt;Save As” menu.</p></li>
+<p>Microsoft Excel default file format is either a binary (.xls) format or xml (.xlsx) format. </p></li>
 </ul>
+
+<h4><strong>R does not currently support the direct import of Excel files. Instead, data in an Excel spreadsheet can be saved as a comma delimited text file, by selecting the option under the “File-&gt;Save As” menu.</strong></h4>
 
   </article>
   <!-- Presenter Notes -->
@@ -957,7 +1239,7 @@ In this seminar we will show how to import a text file into R.</p></li>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:;">
+<slide class="" id="slide-40" style="background:;">
   <hgroup>
     <h4>Examples</h4>
   </hgroup>
@@ -1065,7 +1347,7 @@ In this seminar we will show how to import a text file into R.</p></li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Useful R commands'>
+        data-slide=2 title=''>
          2
       </a>
     </li>
@@ -1077,206 +1359,248 @@ In this seminar we will show how to import a text file into R.</p></li>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='1. Primitive Data types in R'>
+        data-slide=4 title='Useful R commands'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='2. Primary Data Structures in R'>
+        data-slide=5 title='1. Primitive Data types in R'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='2.1 Vectors'>
+        data-slide=6 title='2. Primary Data Structures in R'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='2.1  Vectors Cont...'>
+        data-slide=7 title=''>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='2.1  Vectors Cont...'>
+        data-slide=8 title='In next few slides'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='2.1  Vectors Cont...'>
+        data-slide=9 title='2.1 Vectors'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='2.1  Vectors Cont...'>
+        data-slide=10 title='Is this a proper Vector?'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='2.1  Vectors'>
+        data-slide=11 title='2.1  Vectors Cont...'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='2.2  Lists'>
+        data-slide=12 title='2.1  Vectors Cont...'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='2.2  Lists Cont...'>
+        data-slide=13 title='What are the two other parameters in <em>seq()</em> object?'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='2.2 Lists Cont...'>
+        data-slide=14 title='2.1  Vectors Cont...'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='2.2 Lists Cont...'>
+        data-slide=15 title='2.1  Vectors Cont...'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='2.2 Lists Cont...'>
+        data-slide=16 title='what R command generates following output?'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='2.2 Lists Cont...'>
+        data-slide=17 title='2.1  Vectors'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='2.2 Lists'>
+        data-slide=18 title='2.2  Lists'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='2.3 Dataframes'>
+        data-slide=19 title='2.2  Lists Cont...'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='2.3  Dataframes Cont...'>
+        data-slide=20 title='What function gives the structure of &quot;myAwesomeList&quot;?'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='2.3  Dataframes Cont...'>
+        data-slide=21 title='2.2 Lists Cont...'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='2.3  Dataframes Cont...'>
+        data-slide=22 title='2.2 Lists Cont...'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='2.3  Dataframes Cont...'>
+        data-slide=23 title='2.2 Lists Cont...'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='2.3  Dataframes Cont...'>
+        data-slide=24 title='2.2 Lists Cont...'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='2.3  Dataframes Cont..'>
+        data-slide=25 title='2.2 Lists'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='3  Missing Data'>
+        data-slide=26 title='2.3 Dataframes'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='How to check'>
+        data-slide=27 title='2.3  Dataframes Cont...'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='3  Missing Data Cont..'>
+        data-slide=28 title='2.3  Dataframes Cont...'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='3 Missing Data Cont..'>
+        data-slide=29 title='2.3  Dataframes Cont...'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='4 Importing and Exporting Data'>
+        data-slide=30 title='2.3  Dataframes Cont...'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='4 Importing and Exporting Data'>
+        data-slide=31 title='2.3  Dataframes Cont...'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='4 Importing and Exporting Data'>
+        data-slide=32 title='2.3  Dataframes Cont..'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Examples'>
+        data-slide=33 title='3  Missing Data'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='4 Importing and Exporting Data'>
+        data-slide=34 title='How to check'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='4 Importing and Exporting Data'>
+        data-slide=35 title='3  Missing Data Cont..'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Questions?'>
+        data-slide=36 title='3 Missing Data Cont..'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title=''>
+        data-slide=37 title='4 Importing and Exporting Data'>
          37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='4 Importing and Exporting Data'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='4 Importing and Exporting Data'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Examples'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='4 Importing and Exporting Data'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='4 Importing and Exporting Data'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Questions?'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title=''>
+         44
       </a>
     </li>
   </ul>
@@ -1288,6 +1612,18 @@ In this seminar we will show how to import a text file into R.</p></li>
   <![endif]-->
 </body>
   <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
   
   <!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
